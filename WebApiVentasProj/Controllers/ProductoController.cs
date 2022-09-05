@@ -49,5 +49,18 @@ namespace WebApiVentasProj.Controllers
                 return BadRequest(ex.Message);
             }
         }
+        [HttpPost("[action]")]
+        public IActionResult ConsultarProducto([FromBody] ProductoBusqueda producto)
+        {
+            try
+            {
+                Respuesta respuesta = _productoService.ConsultarProducto(producto.Id);
+                return Ok(respuesta);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
     }
 }

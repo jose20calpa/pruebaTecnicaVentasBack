@@ -53,5 +53,28 @@ namespace Servicio.Servicios
                 ok = false
             };
         }
+
+        public Respuesta ConsultarProducto(int idProducto)
+        {
+            var producto = _repositoryProducto.ConsultarProducto(idProducto);
+            if (producto is null)
+            {
+               
+
+                return new Respuesta
+                {
+                    Mensaje = "No se han encontrado productos",
+                    Objeto = null,
+                    ok = false
+                };
+            }
+            return new Respuesta
+            {
+                Mensaje = "Ok",
+                Objeto = producto,
+                ok = true
+            };
+
+        }
     }
 }

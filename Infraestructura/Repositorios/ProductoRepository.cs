@@ -58,5 +58,27 @@ namespace Infraestructura.Repositorios
                 return productos;
             }
         }
+        public ProductoE ConsultarProducto(int idProd)
+        {
+            try
+            {
+                using (DbVentaContext context = new DbVentaContext())
+                {
+                    var producto = context.Productos.Where(x =>x.IdProducto == idProd).FirstOrDefault();
+                    
+                    return new ProductoE
+                    {
+                        Id = producto.IdProducto,
+                        Nombre = producto.DescProducto,
+                        Valor = producto.ValorUnitario
+                    };
+                }
+            }
+            catch
+            {
+                return null;
+            }
+
+        } 
     }
 }

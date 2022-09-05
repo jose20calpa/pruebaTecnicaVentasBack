@@ -53,5 +53,26 @@ namespace Servicio.Servicios
                 ok = false
             };
         }
+
+        public Respuesta ConsultarCliente(string cedula)
+        {
+            var cliente = _repository.ConsultarCliente(cedula);
+            if (cliente is null)
+            {
+                
+                return new Respuesta
+                {
+                    Mensaje = "No se han encontrado clientes",
+                    Objeto = null,
+                    ok = false
+                };
+            }
+            return new Respuesta
+            {
+                Mensaje = "Ok",
+                Objeto = cliente,
+                ok = true
+            };
+        }
     }
 }

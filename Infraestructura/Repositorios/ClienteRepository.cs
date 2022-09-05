@@ -59,5 +59,30 @@ namespace Infraestructura.Repositorios
                 return clientes;
             }
         }
+
+        public ClienteE ConsultarCliente(string cedula)
+        {
+            try
+            {
+                using (DbVentaContext context = new DbVentaContext())
+                {
+                    var cliente = context.Clientes.Where(x => x.Cedula == cedula).FirstOrDefault();
+
+                    return new ClienteE
+                    {
+                        Id = cliente.IdCliente,
+                        Nombre = cliente.Nombre,
+                        Apellido = cliente.Apellido,
+                        Cedula = cliente.Cedula
+                    };
+                }
+            }
+            catch
+            {
+                return null;
+            }
+
+        }
     }
+
 }

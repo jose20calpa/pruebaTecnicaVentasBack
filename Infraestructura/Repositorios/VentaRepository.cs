@@ -49,7 +49,7 @@ namespace Infraestructura.Repositorios
                         Total = totalVenta,
                     });
                     context.SaveChanges();
-                    var idVenta = context.Venta.OrderBy(x => x.IdVenta).FirstOrDefault().IdVenta;
+                    var idVenta = context.Venta.OrderBy(x => x.IdVenta).LastOrDefault().IdVenta;
                     return idVenta;
                 }
             }

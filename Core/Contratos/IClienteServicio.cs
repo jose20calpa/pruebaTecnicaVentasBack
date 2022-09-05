@@ -6,5 +6,6 @@ namespace Core.Contratos
     {
         Respuesta CrearCliente(ClienteE cliente);
         Respuesta ObtenerClientes();
+        Respuesta ConsultarCliente(string cedula);
     }
 }

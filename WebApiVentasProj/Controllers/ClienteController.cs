@@ -50,5 +50,19 @@ namespace WebApiVentasProj.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
+        [HttpPost("[action]")]
+        public IActionResult ConsultarCliente([FromBody] ClienteBusqueda cliente)
+        {
+            try
+            {
+                Respuesta respuesta = _clienteServicio.ConsultarCliente(cliente.Cedula);
+                return Ok(respuesta);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
     }
 }

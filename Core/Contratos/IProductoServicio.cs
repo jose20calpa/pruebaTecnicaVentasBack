@@ -6,5 +6,6 @@ namespace Core.Contratos
     {
         Respuesta CrearProducto(ProductoE producto);
         Respuesta ObtenerProductos();
+        Respuesta ConsultarProducto(int idProducto);
     }
 }
